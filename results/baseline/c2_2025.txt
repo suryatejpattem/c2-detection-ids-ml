@@ -1,0 +1,35 @@
+Suricata + ET Open baseline - c2_2025
+Suricata 8.0.6, ET Open ruleset
+
+[21988 - Suricata-Main] 2026-09-19 11:07:25 Info: detect: 1 rule files processed. 52466 rules successfully loaded, 0 rules failed, 0 rules skipped
+[22060 - RX#01] 2026-09-19 11:07:27 Notice: pcap: read 1 file, 61609 packets, 67399570 bytes
+
+total alert lines: 329
+
+--- alerts by signature ---
+    256  [1:2221055:1] SURICATA HTTP request missing protocol 
+     48  [1:2035892:8] ET REMOTE_ACCESS NetSupport Remote Admin Checkin 
+     12  [1:2221010:1] SURICATA HTTP unable to match response to request 
+      3  [1:2066280:1] ET MALWARE StealC_V2 CnC Activity (POST) 
+      3  [1:2035895:8] ET REMOTE_ACCESS NetSupport Remote Admin Response 
+      2  [1:2221050:1] SURICATA HTTP too many warnings 
+      1  [1:2066559:1] ET MALWARE StealC CnC Activity (POST) 
+      1  [1:2061388:1] ET EXPLOIT_KIT ZPHP Domain in TLS SNI (islonline .org) 
+      1  [1:2061385:1] ET EXPLOIT_KIT ZPHP Domain in DNS Lookup (islonline .org) 
+      1  [1:2034559:3] ET REMOTE_ACCESS NetSupport GeoLocation Lookup Request 
+      1  [1:2026888:4] ET INFO DNS Query for Suspicious .icu Domain 
+
+--- alerts by source host ---
+    313 10.8.20.101
+     12 79.141.165.202
+      4 38.146.28.242
+
+--- alerts by destination ---
+    305 38.146.28.242:1203
+      6 10.8.20.101:63963
+      6 10.8.20.101:63958
+      4 79.141.165.202:80
+      4 10.8.20.101:63910
+      2 10.8.20.1:53
+      1 23.23.49.179:443
+      1 104.26.1.231:80

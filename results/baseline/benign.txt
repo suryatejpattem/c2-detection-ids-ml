@@ -1,0 +1,45 @@
+Suricata + ET Open baseline - benign
+Suricata 8.0.6, ET Open ruleset
+
+[11300 - Suricata-Main] 2026-09-20 10:10:59 Info: detect: 1 rule files processed. 52466 rules successfully loaded, 0 rules failed, 0 rules skipped
+[11328 - RX#01] 2026-09-20 10:11:19 Notice: pcap: read 1 file, 338523 packets, 306957839 bytes
+
+total alert lines: 165067
+
+--- alerts by signature ---
+  82281  [1:2200073:2] SURICATA IPv4 invalid checksum 
+  47320  [1:2200075:2] SURICATA UDPv4 invalid checksum 
+  34791  [1:2200074:2] SURICATA TCPv4 invalid checksum 
+    482  [1:2033355:1] ET INFO Windows Powershell User-Agent Usage 
+    164  [1:2031071:5] ET INFO Microsoft Connection Test 
+     10  [1:2210056:2] SURICATA STREAM bad window update 
+      5  [1:2210050:3] SURICATA STREAM reassembly overlap with different data 
+      3  [1:2033078:5] ET INFO Session Traversal Utilities for NAT (STUN Binding Request On Non-Standard High Port) 
+      3  [1:2016150:4] ET INFO Session Traversal Utilities for NAT (STUN Binding Response) 
+      3  [1:2016149:4] ET INFO Session Traversal Utilities for NAT (STUN Binding Request) 
+      2  [1:2039594:2] ET INFO External IP Address Lookup Domain (get .geojs .io) in DNS Lookup 
+      1  [1:2221010:1] SURICATA HTTP unable to match response to request 
+      1  [1:2210046:3] SURICATA STREAM SHUTDOWN RST invalid ack 
+      1  [1:2210045:2] SURICATA STREAM Packet with invalid ack 
+
+--- alerts by source host ---
+ 165063 10.0.2.5
+      3 162.159.207.0
+      1 2.18.67.213
+
+--- alerts by destination ---
+  11948 173.194.61.34:443
+   8538 50.202.95.89:443
+   6591 8.8.8.8:53
+   5544 23.201.34.144:443
+   3884 173.194.31.167:443
+   3842 23.201.56.69:443
+   3230 23.201.34.134:443
+   2810 23.221.236.4:443
+   2562 57.145.0.128:443
+   2154 23.61.11.151:443
+   2078 151.101.1.140:443
+   2030 23.201.56.76:443
+   1963 18.161.21.27:443
+   1928 23.221.236.6:443
+   1862 50.202.95.17:443

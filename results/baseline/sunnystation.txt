@@ -1,0 +1,46 @@
+Suricata + ET Open baseline - sunnystation
+Suricata 8.0.6, ET Open ruleset
+
+[4879 - Suricata-Main] 2026-09-20 07:54:03 Info: detect: 1 rule files processed. 52466 rules successfully loaded, 0 rules failed, 0 rules skipped
+[4897 - RX#01] 2026-09-20 07:54:05 Notice: pcap: read 1 file, 30023 packets, 19277433 bytes
+
+total alert lines: 117
+
+--- alerts by signature ---
+     74  [1:2028765:2] ET JA3 Hash - [Abuse.ch] Possible Dridex 
+     29  [1:2031412:12] ET MALWARE FormBook CnC Checkin (GET) 
+      5  [1:2260002:1] SURICATA Applayer Detect protocol only one direction 
+      1  [1:2221036:1] SURICATA HTTP Response excessive header repetition 
+      1  [1:2067087:1] ET INFO NTLM Session Setup Request - Auth 
+      1  [1:2067086:1] ET INFO NTLMv1 Session Setup Response - Challenge 
+      1  [1:2067085:1] ET INFO NTLM Session Setup Request - Negotiate 
+      1  [1:2062715:1] ET INFO Observed UA-CPU Header 
+      1  [1:2018959:6] ET INFO PE EXE or DLL Windows file download HTTP 
+      1  [1:2014819:5] ET INFO Packed Executable Download 
+      1  [1:2014520:9] ET INFO EXE - Served Attached HTTP 
+      1  [1:2013659:6] ET INFO Self Signed SSL Certificate (SomeOrganizationalUnit) 
+
+--- alerts by source host ---
+     41 172.16.0.149
+     39 172.16.0.170
+     31 172.16.0.131
+      4 64.34.171.228
+      1 54.38.242.185
+      1 172.16.0.52
+
+--- alerts by destination ---
+     28 135.148.121.246:8080
+     10 59.148.253.194:443
+      9 168.197.250.14:80
+      5 172.16.0.52:139
+      5 144.217.88.125:443
+      4 27.254.174.84:8080
+      4 180.250.21.2:443
+      4 172.16.0.149:49747
+      3 23.227.38.74:80
+      3 216.58.193.147:80
+      3 213.186.33.5:80
+      3 198.185.159.144:80
+      3 139.196.72.155:8080
+      2 172.16.0.52:445
+      2 154.206.65.249:80

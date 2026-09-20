@@ -1,0 +1,37 @@
+Suricata + ET Open baseline - anchor
+Suricata 8.0.6, ET Open ruleset
+
+[5756 - Suricata-Main] 2026-09-19 08:24:20 Info: detect: 1 rule files processed. 52466 rules successfully loaded, 0 rules failed, 0 rules skipped
+[5777 - RX#01] 2026-09-19 08:24:21 Notice: pcap: read 1 file, 15512 packets, 6333775 bytes
+
+total alert lines: 561
+
+--- alerts by signature ---
+    264  [1:2035892:8] ET REMOTE_ACCESS NetSupport Remote Admin Checkin 
+    264  [1:2013926:11] ET INFO HTTP traffic on port 443 (POST) 
+     30  [1:2221036:1] SURICATA HTTP Response excessive header repetition 
+      2  [1:2035895:8] ET REMOTE_ACCESS NetSupport Remote Admin Response 
+      1  [1:2031071:5] ET INFO Microsoft Connection Test 
+
+--- alerts by source host ---
+    529 10.2.28.88
+     11 23.218.232.148
+      7 23.218.232.166
+      6 23.218.232.183
+      6 23.218.232.142
+      2 45.131.214.85
+
+--- alerts by destination ---
+    528 45.131.214.85:443
+     10 10.2.28.88:62035
+      6 10.2.28.88:60056
+      5 10.2.28.88:55829
+      2 10.2.28.88:54527
+      2 10.2.28.88:54525
+      2 10.2.28.88:51912
+      1 23.47.50.182:80
+      1 10.2.28.88:62034
+      1 10.2.28.88:60055
+      1 10.2.28.88:55828
+      1 10.2.28.88:54526
+      1 10.2.28.88:54524

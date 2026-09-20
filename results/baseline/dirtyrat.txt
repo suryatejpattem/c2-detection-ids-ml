@@ -1,0 +1,33 @@
+Suricata + ET Open baseline - dirtyrat
+Suricata 8.0.6, ET Open ruleset
+
+[7287 - Suricata-Main] 2026-09-20 08:39:21 Info: detect: 1 rule files processed. 52466 rules successfully loaded, 0 rules failed, 0 rules skipped
+[7307 - RX#01] 2026-09-20 08:39:23 Notice: pcap: read 1 file, 11562 packets, 11341372 bytes
+
+total alert lines: 114
+
+--- alerts by signature ---
+    102  [1:2030358:1] ET MALWARE STRRAT CnC Checkin 
+      5  [1:2260002:1] SURICATA Applayer Detect protocol only one direction 
+      1  [1:2400027:4804] ET DROP Spamhaus DROP Listed Traffic Inbound group 28 
+      1  [1:2067087:1] ET INFO NTLM Session Setup Request - Auth 
+      1  [1:2067086:1] ET INFO NTLMv1 Session Setup Response - Challenge 
+      1  [1:2067085:1] ET INFO NTLM Session Setup Request - Negotiate 
+      1  [1:2054141:1] ET INFO External IP Lookup Domain in DNS Lookup (ip-api .com) 
+      1  [1:2031071:5] ET INFO Microsoft Connection Test 
+      1  [1:2022082:6] ET INFO External IP Lookup ip-api.com 
+
+--- alerts by source host ---
+    112 172.16.1.66
+      1 172.16.1.4
+      1 141.98.10.79
+
+--- alerts by destination ---
+    102 141.98.10.79:12132
+      5 172.16.1.4:139
+      2 172.16.1.4:445
+      1 23.215.55.140:80
+      1 208.95.112.1:80
+      1 172.16.1.66:49754
+      1 172.16.1.66:49692
+      1 172.16.1.4:53

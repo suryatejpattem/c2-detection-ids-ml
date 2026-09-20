@@ -1,6 +1,4 @@
-\# C2 Detection: Signatures and Behavioural Analysis
-
-
+# C2 Detection: Signatures and Behavioural Analysis
 
 Network detection engineering across five packet captures, comparing what
 
@@ -8,29 +6,19 @@ signature-based detection and interval-based behavioural analysis each catch,
 
 and where each one is blind.
 
-
-
 Five malware families are present: NetSupport RAT (two separate deployments),
 
 StealC v2, Emotet, Formbook, and STRRAT. A self-captured benign control
 
 provides the negative class.
 
-
-
-\## Status
-
-
+## Status
 
 Work in progress. Baseline measurement and the behavioural detectors are
 
 complete; custom Suricata rules and the coverage comparison are in development.
 
-
-
-\## Repository layout
-
-
+## Repository layout
 
 ```
 
@@ -46,11 +34,7 @@ rules/        custom Suricata rules
 
 ```
 
-
-
-\## Tooling
-
-
+## Tooling
 
 ```
 
@@ -62,21 +46,13 @@ pandas, scikit-learn  feature extraction and unsupervised detection
 
 ```
 
-
-
-\## Captures
-
-
+## Captures
 
 Packet captures are not committed. Sources and SHA256 hashes are in
 
 `docs/captures.md`.
 
-
-
-\## Ground truth
-
-
+## Ground truth
 
 `data/ground-truth.md` records every known indicator per capture, with each
 

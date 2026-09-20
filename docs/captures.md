@@ -1,6 +1,4 @@
-\# Capture Sources
-
-
+# Capture Sources
 
 Packet captures are not committed to this repository. Four are publicly
 
@@ -8,13 +6,9 @@ available malware traffic captures; one was produced for this project and
 
 contains no malicious traffic.
 
-
-
 Each file's SHA256 is recorded below. Anyone reproducing this work can verify
 
 they have the identical bytes:
-
-
 
 ```
 
@@ -24,25 +18,17 @@ Get-FileHash <file>.pcap       # PowerShell
 
 ```
 
+## Why they are not in the repository
 
+- `benign.pcap` is 298 MB; GitHub rejects files over 100 MB
 
-\## Why they are not in the repository
+- The four malicious captures total roughly 104 MB
 
-
-
-\- `benign.pcap` is 298 MB; GitHub rejects files over 100 MB
-
-\- The four malicious captures total roughly 104 MB
-
-\- Distributing live command-and-control traffic through a public repository is
+- Distributing live command-and-control traffic through a public repository is
 
 &#x20; not appropriate regardless of size
 
-
-
-\## Downloaded captures
-
-
+## Downloaded captures
 
 All four are from malware-traffic-analysis.net. Archives on that site are
 
@@ -50,11 +36,7 @@ password-protected; the password scheme is documented on the site's "about"
 
 page.
 
-
-
-\### 2026-02-28 — NetSupport RAT
-
-
+### 2026-02-28 — NetSupport RAT
 
 ```
 
@@ -70,11 +52,7 @@ size     6,581 kB
 
 ```
 
-
-
-\### 2025-08-20 — NetSupport RAT + StealC v2
-
-
+### 2025-08-20 — NetSupport RAT + StealC v2
 
 ```
 
@@ -90,11 +68,7 @@ size     68 MB
 
 ```
 
-
-
-\### 2022-02-23 — Emotet + Formbook
-
-
+### 2022-02-23 — Emotet + Formbook
 
 ```
 
@@ -110,11 +84,7 @@ size     19 MB
 
 ```
 
-
-
-\### 2024-07-30 — STRRAT
-
-
+### 2024-07-30 — STRRAT
 
 ```
 
@@ -132,17 +102,11 @@ size     11 MB
 
 ```
 
-
-
-\## Benign control capture
-
-
+## Benign control capture
 
 Produced for this project. Not redistributable in the repository due to size,
 
 but fully reproducible from the method below.
-
-
 
 ```
 
@@ -160,17 +124,11 @@ duration 2 h 47 m 14 s
 
 ```
 
-
-
-\### How it was produced
-
-
+### How it was produced
 
 A Windows 11 virtual machine, checked beforehand for persistence artifacts left
 
 by earlier lab work — none survived. See `data/ground-truth.md`.
-
-
 
 ```
 
@@ -178,31 +136,21 @@ dumpcap -i <ethernet device> -s 0 -F pcap -w benign.pcap
 
 ```
 
-
-
 `-s 0` captures full packets. Truncated packets would leave HTTP headers
 
 incomplete and produce empty fields in Zeek's `http.log`.
 
-
-
 Activity during the capture:
 
+- roughly 45 minutes of normal browsing across 20+ sites
 
+- a Windows Update check
 
-\- roughly 45 minutes of normal browsing across 20+ sites
-
-\- a Windows Update check
-
-\- the remainder idle, so scheduled background traffic dominates
-
-
+- the remainder idle, so scheduled background traffic dominates
 
 Two PowerShell loops ran throughout, generating benign traffic on fixed
 
 intervals:
-
-
 
 ```
 
@@ -212,19 +160,13 @@ http://detectportal.firefox.com/success.txt      every 30 s
 
 ```
 
-
-
 These exist to test whether interval analysis can distinguish automated benign
 
 traffic from malware beaconing. They are labelled `benign-synthetic` throughout
 
 and are never presented as naturally occurring.
 
-
-
-\### Capturing on the sending host
-
-
+### Capturing on the sending host
 
 Because the capture was taken on the machine generating the traffic, every
 
@@ -234,11 +176,7 @@ checksums after the capture tool copies the packet. This affects 82,711
 
 packets, 24.4% of the capture.
 
-
-
 Both analysis tools must be told to ignore it:
-
-
 
 ```
 
@@ -247,8 +185,6 @@ zeek -C -r benign.pcap
 suricata -k none -r benign.pcap -l <output>
 
 ```
-
-
 
 Without these flags, Zeek discards every outbound packet and Suricata leaves
 

@@ -1,0 +1,40 @@
+name: Validate Suricata rules
+
+on:
+  push:
+    paths:
+      - 'rules/**'
+      - '.github/workflows/validate-rules.yml'
+  pull_request:
+    paths:
+      - 'rules/**'
+  workflow_dispatch:
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install Suricata
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y suricata
+          suricata -V
+
+      - name: Validate the deployable ruleset
+        run: sudo suricata -T -S rules/local.rules -l /tmp
+
+      - name: Validate each rule file on its own
+        run: |
+          for f in rules/individual/*.rules; do
+            echo "--- $f"
+            sudo suricata -T -S "$f" -l /tmp
+          done
+
+      - name: Check local.rules matches the individual files
+        run: |
+          cat rules/individual/rule2.rules \
+              rules/individual/rule3.rules \
+              rules/individual/rule4.rules > /tmp/expected.rules
+          diff -u /tmp/expected.rules rules/local.rules

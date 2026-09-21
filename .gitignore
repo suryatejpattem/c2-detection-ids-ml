@@ -10,6 +10,10 @@ suricata/
 *.log
 eve.json
 
+# Exception: alert output committed as evidence for the measured results
+# in results/custom-rules.md
+!results/custom/*.log
+
 # Python
 venv/
 __pycache__/

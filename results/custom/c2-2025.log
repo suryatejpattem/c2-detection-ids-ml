@@ -1,0 +1,4 @@
+08/20/2025-14:01:00.473916  [**] [1:1000002:1] LOCAL NetSupport RAT Check-in - rate limited [**] [Classification: A Network Trojan was detected] [Priority: 1] {TCP} 10.8.20.101:63910 -> 38.146.28.242:1203
+08/20/2025-14:45:03.294108  [**] [1:1000004:1] LOCAL NetSupport RAT - interactive session active, operator at keyboard [**] [Classification: A Network Trojan was detected] [Priority: 1] {TCP} 10.8.20.101:63910 -> 38.146.28.242:1203
+08/20/2025-14:50:08.038940  [**] [1:1000004:1] LOCAL NetSupport RAT - interactive session active, operator at keyboard [**] [Classification: A Network Trojan was detected] [Priority: 1] {TCP} 10.8.20.101:63910 -> 38.146.28.242:1203
+08/20/2025-14:58:44.724405  [**] [1:1000004:1] LOCAL NetSupport RAT - interactive session active, operator at keyboard [**] [Classification: A Network Trojan was detected] [Priority: 1] {TCP} 10.8.20.101:63910 -> 38.146.28.242:1203

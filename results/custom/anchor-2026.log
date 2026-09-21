@@ -1,0 +1,5 @@
+02/28/2026-14:55:51.679800  [**] [1:1000002:1] LOCAL NetSupport RAT Check-in - rate limited [**] [Classification: A Network Trojan was detected] [Priority: 1] {TCP} 10.2.28.88:51912 -> 45.131.214.85:443
+02/28/2026-15:56:01.209424  [**] [1:1000002:1] LOCAL NetSupport RAT Check-in - rate limited [**] [Classification: A Network Trojan was detected] [Priority: 1] {TCP} 10.2.28.88:51912 -> 45.131.214.85:443
+02/28/2026-16:56:10.603065  [**] [1:1000002:1] LOCAL NetSupport RAT Check-in - rate limited [**] [Classification: A Network Trojan was detected] [Priority: 1] {TCP} 10.2.28.88:51912 -> 45.131.214.85:443
+02/28/2026-17:56:18.809691  [**] [1:1000002:1] LOCAL NetSupport RAT Check-in - rate limited [**] [Classification: A Network Trojan was detected] [Priority: 1] {TCP} 10.2.28.88:51912 -> 45.131.214.85:443
+02/28/2026-18:56:26.197517  [**] [1:1000002:1] LOCAL NetSupport RAT Check-in - rate limited [**] [Classification: A Network Trojan was detected] [Priority: 1] {TCP} 10.2.28.88:51912 -> 45.131.214.85:443

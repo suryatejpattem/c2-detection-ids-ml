@@ -7,7 +7,7 @@ repository. Nothing is estimated.
 Engine: Suricata 8.0.6 RELEASE
 Rules tested in isolation with `-S` (use ONLY this file, ignore ET Open).
 
-\---
+---
 
 ## Reproducing these numbers
 

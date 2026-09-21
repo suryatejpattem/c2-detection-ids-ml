@@ -7,7 +7,7 @@ repository. Nothing is estimated.
 Engine: Suricata 8.0.6 RELEASE
 Rules tested in isolation with `-S` (use ONLY this file, ignore ET Open).
 
-\---
+---
 
 ## Reproducing these numbers
 
@@ -25,7 +25,7 @@ suricata -r benign.pcap -S rules/local.rules -l <outdir> -k none
 grep -c ":1000002:" <outdir>/fast.log
 ```
 
-\---
+---
 
 ## Results
 
@@ -35,31 +35,31 @@ it is the baseline that Rule 2 is measured against.
 
 ```
 sid       anchor   c2_2025   sunnystation   dirtyrat   benign
-&#x20;         (2026)   (2025)    (2022)         (2024)     (own capture)
-\-----------------------------------------------------------------------
+          (2026)   (2025)    (2022)         (2024)     (own capture)
+-----------------------------------------------------------------------
 1000001     264       48          0             0          0     baseline
 1000002       5        1          0             0          0
 1000003       0        0         27             0          0
 1000004       0        3          0             0          0
-\-----------------------------------------------------------------------
+-----------------------------------------------------------------------
 shipped       5        4         27             0          0
 ```
 
 False positives on 338,523 packets of benign traffic: **0**, every rule.
 
-\---
+---
 
 ## sid 1000001 — NetSupport check-in, content only (baseline, not deployed)
 
 ```
 alert http $HOME_NET any -> $EXTERNAL_NET any (
-&#x20;   msg:"LOCAL NetSupport RAT Check-in - content indicators only";
-&#x20;   flow:established,to_server;
-&#x20;   http.method; content:"POST";
-&#x20;   http.uri; content:"/fakeurl.htm"; startswith;
-&#x20;   http.user_agent; content:"NetSupport Manager/1.3"; fast_pattern;
-&#x20;   classtype:trojan-activity;
-&#x20;   sid:1000001; rev:1;
+    msg:"LOCAL NetSupport RAT Check-in - content indicators only";
+    flow:established,to_server;
+    http.method; content:"POST";
+    http.uri; content:"/fakeurl.htm"; startswith;
+    http.user_agent; content:"NetSupport Manager/1.3"; fast_pattern;
+    classtype:trojan-activity;
+    sid:1000001; rev:1;
 )
 ```
 
@@ -84,7 +84,7 @@ The rule was not modified between runs.
 **Measured against ET Open on the same two files:**
 
 ```
-&#x20;                                     2026      2025
+                                      2026      2025
 ET sid 2035892  (URI + User-Agent)     264       48     survived
 ET sid 2013926  (port 443 hardcoded)   264        0     broke
 LOCAL sid 1000001 (this rule)          264       48     survived
@@ -97,20 +97,20 @@ malware to test against.
 **Why it is not deployed.** 264 alerts for one infected host across four hours
 is unusable in a queue. Superseded by sid 1000002.
 
-\---
+---
 
 ## sid 1000002 — same detection, rate limited
 
 ```
 alert http $HOME_NET any -> $EXTERNAL_NET any (
-&#x20;   msg:"LOCAL NetSupport RAT Check-in - rate limited";
-&#x20;   flow:established,to_server;
-&#x20;   http.method; content:"POST";
-&#x20;   http.uri; content:"/fakeurl.htm"; startswith;
-&#x20;   http.user_agent; content:"NetSupport Manager/1.3"; fast_pattern;
-&#x20;   threshold: type limit, track by_src, count 1, seconds 3600;
-&#x20;   classtype:trojan-activity;
-&#x20;   sid:1000002; rev:1;
+    msg:"LOCAL NetSupport RAT Check-in - rate limited";
+    flow:established,to_server;
+    http.method; content:"POST";
+    http.uri; content:"/fakeurl.htm"; startswith;
+    http.user_agent; content:"NetSupport Manager/1.3"; fast_pattern;
+    threshold: type limit, track by_src, count 1, seconds 3600;
+    classtype:trojan-activity;
+    sid:1000002; rev:1;
 )
 ```
 
@@ -121,9 +121,9 @@ is byte-for-byte identical, so detection is unchanged — only reporting is.
 
 ```
 type limit      alert on the first match in the window, then stay quiet.
-&#x20;               Detection continues underneath; the alerts stop.
+                Detection continues underneath; the alerts stop.
 track by_src    one window per source IP, so two infected hosts each get
-&#x20;               their own alert instead of sharing one.
+                their own alert instead of sharing one.
 count 1         one alert per window.
 seconds 3600    the window opens at the first match, not on the clock hour.
 ```
@@ -131,7 +131,7 @@ seconds 3600    the window opens at the first match, not on the clock hour.
 **Result.**
 
 ```
-&#x20;             sid 1000001    sid 1000002
+              sid 1000001    sid 1000002
 anchor 2026        264            5
 c2_2025             48            1
 ```
@@ -155,17 +155,17 @@ analyst who needs the beacon frequency has to read the flow records, not the
 alert queue. That is the correct trade — an alert exists to get attention once,
 and the investigation reads the logs — but it is a real loss and worth saying.
 
-\---
+---
 
 ## sid 1000003 — self-signed certificate with placeholder identity strings
 
 ```
 alert tls $EXTERNAL_NET any -> $HOME_NET any (
-&#x20;   msg:"LOCAL Self-signed certificate with placeholder identity strings";
-&#x20;   tls.cert_subject; content:"O=Global Security"; content:"CN=example.com";
-&#x20;   tls.cert_issuer;  content:"O=Global Security"; content:"CN=example.com";
-&#x20;   classtype:trojan-activity;
-&#x20;   sid:1000003; rev:3;
+    msg:"LOCAL Self-signed certificate with placeholder identity strings";
+    tls.cert_subject; content:"O=Global Security"; content:"CN=example.com";
+    tls.cert_issuer;  content:"O=Global Security"; content:"CN=example.com";
+    classtype:trojan-activity;
+    sid:1000003; rev:3;
 )
 ```
 
@@ -180,16 +180,16 @@ was written.
 
 ```
 SNI    39 of 71 sessions on 172.16.0.170 had none
-&#x20;      44 of 90 sessions on 172.16.0.149 had none
-&#x20;      the sessions that did carry an SNI were Microsoft telemetry and Bing
-&#x20;      -> Emotet connects to raw IPs and never names a host. Dead end,
-&#x20;         and a measured fact about the malware.
+       44 of 90 sessions on 172.16.0.149 had none
+       the sessions that did carry an SNI were Microsoft telemetry and Bing
+       -> Emotet connects to raw IPs and never names a host. Dead end,
+          and a measured fact about the malware.
 
 JA3    ET Open already had a JA3 rule. It fired 74 times and said
-&#x20;      "Possible Dridex" on traffic that was Emotet. JA3 fingerprints the
-&#x20;      TLS library and its configuration, not the malware, and those two
-&#x20;      families share one. Building on JA3 would reproduce a known
-&#x20;      attribution error.
+       "Possible Dridex" on traffic that was Emotet. JA3 fingerprints the
+       TLS library and its configuration, not the malware, and those two
+       families share one. Building on JA3 would reproduce a known
+       attribution error.
 
 cert   usable - see below.
 ```
@@ -198,9 +198,9 @@ cert   usable - see below.
 
 ```
 subject   C=GB, ST=London, L=London, O=Global Security,
-&#x20;         OU=IT Department, CN=example.com
+          OU=IT Department, CN=example.com
 issuer    C=GB, ST=London, L=London, O=Global Security,
-&#x20;         OU=IT Department, CN=example.com
+          OU=IT Department, CN=example.com
 ```
 
 Subject and issuer identical, character for character. Nobody signed it — it
@@ -214,8 +214,8 @@ Distribution in the capture:
 172.16.0.170    18 sessions     Emotet victim
 172.16.0.149     9 sessions     Emotet victim
 172.16.0.131     0 sessions     Formbook victim - no TLS at all
-&#x20;               --
-&#x20;               27 sessions
+                --
+                27 sessions
 ```
 
 Every other certificate in the capture traced to DigiCert or a Microsoft CA.
@@ -228,14 +228,14 @@ satisfy the second half.
 
 ```
 to 172.16.0.170 - 13 servers
-&#x20;  61.7.231.229:443      59.148.253.194:443     180.250.21.2:443
-&#x20;  61.7.231.226:443      168.197.250.14:80
-&#x20;  54.37.106.167:8080    162.144.76.184:8080    139.196.72.155:8080
-&#x20;  27.254.174.84:8080    128.199.93.156:8080    128.199.192.135:8080
-&#x20;  198.199.98.78:8080    185.184.25.78:8080
+   61.7.231.229:443      59.148.253.194:443     180.250.21.2:443
+   61.7.231.226:443      168.197.250.14:80
+   54.37.106.167:8080    162.144.76.184:8080    139.196.72.155:8080
+   27.254.174.84:8080    128.199.93.156:8080    128.199.192.135:8080
+   198.199.98.78:8080    185.184.25.78:8080
 
 to 172.16.0.149 - 3 servers
-&#x20;  144.217.88.125:443    135.148.121.246:8080   134.209.156.68:443
+   144.217.88.125:443    135.148.121.246:8080   134.209.156.68:443
 ```
 
 Three different ports — 443 on six servers, 8080 on nine, and **80 on one**.
@@ -249,7 +249,7 @@ The two victims share no servers at all.
 capture:
 
 ```
-&#x20;                   alerts   unique C2 servers
+                    alerts   unique C2 servers
 ET Open JA3            74            17
 LOCAL sid 1000003      27            16
 ```
@@ -272,19 +272,19 @@ threat-intelligence lookup of the C2 addresses, not from the rule.
 Durability is **unproven** — only one Emotet capture exists here, so there is
 no second file to test an infrastructure change against.
 
-\---
+---
 
 ## sid 1000004 — NetSupport interactive session
 
 ```
 alert tcp $HOME_NET any -> $EXTERNAL_NET any (
-&#x20;   msg:"LOCAL NetSupport RAT - interactive session active, operator at keyboard";
-&#x20;   flow:established,to_server;
-&#x20;   content:"NC_DATA|0a|"; fast_pattern;
-&#x20;   content:"CID="; distance:0;
-&#x20;   threshold: type limit, track by_src, count 1, seconds 300;
-&#x20;   classtype:trojan-activity;
-&#x20;   sid:1000004; rev:1;
+    msg:"LOCAL NetSupport RAT - interactive session active, operator at keyboard";
+    flow:established,to_server;
+    content:"NC_DATA|0a|"; fast_pattern;
+    content:"CID="; distance:0;
+    threshold: type limit, track by_src, count 1, seconds 300;
+    classtype:trojan-activity;
+    sid:1000004; rev:1;
 )
 ```
 
@@ -316,19 +316,19 @@ t=777.18    273 bytes  |
 
 t=837.22    232 bytes  |
 t=897.47    232 bytes  |  43 packets, exactly 60.2 seconds apart,
-&#x20;  ...      232 bytes  |  identical size every time
+   ...      232 bytes  |  identical size every time
 t=3362.68   232 bytes  |
 
 t=3419.23   299 bytes  <-- larger, then check-ins STOP
 
-&#x20;           546 seconds, no check-ins
+            546 seconds, no check-ins
 
 t=3965.51   232 bytes  |  5 more beacons
 t=4206.08   232 bytes  |
 
 t=4240.68   299 bytes  <-- larger again, then check-ins stop
 
-&#x20;           148 seconds, no check-ins
+            148 seconds, no check-ins
 
 t=4388.41   232 bytes  |  5 more beacons
 t=4628.74   232 bytes  |
@@ -358,12 +358,12 @@ Four of them sit 0.3 milliseconds apart.
 BEACON (232 bytes, every 60.2 s)        SESSION (4,045 packets in 546 s)
 
 POST http://38.146.28.242/fakeurl.htm   NC_DATA
-&#x20;    HTTP/1.1                           Content-Length:   403
+     HTTP/1.1                           Content-Length:   403
 User-Agent: NetSupport Manager/1.3
 Content-Length:    36                   CID=1190
 Host: 38.146.28.242                     SEQ=3
 Connection: Keep-Alive                  CRC=1895889993
-&#x20;                                       LEN=348
+                                        LEN=348
 CMD=ENCD ...                            DATA=<binary>
 ```
 
@@ -417,7 +417,7 @@ matches is cleartext; if the session protocol were wrapped in TLS the rule
 would score 0, which is the wall sid 1000003 ran into. And like sid 1000003,
 its durability is unproven — one capture, no second file to test against.
 
-\---
+---
 
 ## Notes on the numbers
 

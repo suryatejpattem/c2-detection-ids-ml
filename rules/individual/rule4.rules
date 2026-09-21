@@ -1,0 +1,1 @@
+alert tcp $HOME_NET any -> $EXTERNAL_NET any (msg:"LOCAL NetSupport RAT - interactive session active, operator at keyboard"; flow:established,to_server; content:"NC_DATA|0a|"; fast_pattern; content:"CID="; distance:0; threshold: type limit, track by_src, count 1, seconds 300; classtype:trojan-activity; sid:1000004; rev:1;)

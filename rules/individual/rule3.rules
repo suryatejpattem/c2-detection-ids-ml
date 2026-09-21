@@ -1,0 +1,1 @@
+alert tls $EXTERNAL_NET any -> $HOME_NET any (msg:"LOCAL Self-signed certificate with placeholder identity strings"; tls.cert_subject; content:"O=Global Security"; content:"CN=example.com"; tls.cert_issuer; content:"O=Global Security"; content:"CN=example.com"; classtype:trojan-activity; sid:1000003; rev:3;)

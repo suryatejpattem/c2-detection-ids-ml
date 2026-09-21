@@ -8,12 +8,13 @@ MIN_EVENTS = 10          # need >= 9 gaps for a meaningful statistic
 MALICIOUS = {
     '45.131.214.85',      # C2 2026 NetSupport
     '38.146.28.242',      # C2 2025 NetSupport
-    '79.141.165.202',     # 2025 suspected exfil
+    '79.141.165.202',     # 2025 StealC CnC (ET sids 2066280, 2066559)
     '45.61.150.28',       # 2025 payload download
     '172.86.90.13',       # 2025 early stage
     '209.59.180.92',      # 2025 early stage
     '135.148.121.246',    # 2022 Emotet C2 (from 172.16.0.149)
     '59.148.253.194',     # 2022 Emotet C2 (from 172.16.0.170)
+    '141.98.10.79',       # 2024 STRRAT C2
 }
 
 # Traffic we generated ourselves - benign but automated

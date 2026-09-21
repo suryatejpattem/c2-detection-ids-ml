@@ -1,0 +1,55 @@
+rows loaded: 117
+rows after dropping incomplete: 117 (removed 0)
+
+=== contamination = 0.05 -> 6 flagged ===
+capture          dest  dest_port   label  n_events  median_gap      rcv
+ benign       8.8.8.8         53  benign      3274    0.011037 0.977902
+ anchor     10.2.28.2        445 unknown        24  725.212383 0.241035
+ anchor   10.2.28.255        138 unknown        63  310.041411 0.094368
+ anchor     10.2.28.2        135 unknown        41  312.516121 0.779993
+ benign 72.145.35.107        443  benign        18  399.646276 0.754284
+ benign 173.194.61.34        443  benign        15   99.771749 0.939642
+
+=== contamination = 0.1 -> 12 flagged ===
+capture           dest  dest_port   label  n_events  median_gap      rcv
+ benign        8.8.8.8         53  benign      3274    0.011037 0.977902
+ anchor      10.2.28.2        445 unknown        24  725.212383 0.241035
+ anchor    10.2.28.255        138 unknown        63  310.041411 0.094368
+ anchor      10.2.28.2        135 unknown        41  312.516121 0.779993
+ benign  72.145.35.107        443  benign        18  399.646276 0.754284
+ benign  173.194.61.34        443  benign        15   99.771749 0.939642
+ anchor      10.2.28.2        123 unknown        13 1024.019676 0.000009
+ anchor      10.2.28.2        137 unknown        51  310.061388 0.000028
+ anchor      10.2.28.2      49671 unknown        38  335.688055 0.664634
+ anchor      10.2.28.2         53 unknown       260    0.742142 0.999999
+ benign  104.18.37.200        443  benign        10   49.497860 0.658993
+ benign 151.101.193.91         80  benign       113   30.172472 0.001701
+
+=== contamination = 0.2 -> 24 flagged ===
+     capture            dest  dest_port     label  n_events  median_gap      rcv
+      benign         8.8.8.8         53    benign      3274    0.011037 0.977902
+      anchor       10.2.28.2        445   unknown        24  725.212383 0.241035
+      anchor     10.2.28.255        138   unknown        63  310.041411 0.094368
+      anchor       10.2.28.2        135   unknown        41  312.516121 0.779993
+      benign   72.145.35.107        443    benign        18  399.646276 0.754284
+      benign   173.194.61.34        443    benign        15   99.771749 0.939642
+      anchor       10.2.28.2        123   unknown        13 1024.019676 0.000009
+      anchor       10.2.28.2        137   unknown        51  310.061388 0.000028
+      anchor       10.2.28.2      49671   unknown        38  335.688055 0.664634
+      anchor       10.2.28.2         53   unknown       260    0.742142 0.999999
+      benign   104.18.37.200        443    benign        10   49.497860 0.658993
+      benign  151.101.193.91         80    benign       113   30.172472 0.001701
+      benign   142.250.217.8        443    benign        10    4.218137 0.899473
+sunnystation  59.148.253.194        443 malicious        10   43.642070 0.194376
+    dirtyrat     23.52.9.222        443   unknown        11    0.310763 0.050210
+      benign  172.64.154.167        443    benign        13   75.250443 0.442855
+      benign   18.161.21.119        443    benign        12    0.000428 0.210028
+sunnystation     172.16.0.52         53   unknown        61    5.194838 0.935657
+sunnystation 135.148.121.246       8080 malicious        28   44.812299 0.333258
+      benign  151.101.129.91         80    benign        87   30.189469 0.002491
+sunnystation     172.16.0.52        135   unknown        10   79.567181 0.998661
+      benign  52.184.222.228        443    benign        12   47.668523 0.300318
+      anchor     10.2.28.255        137   unknown        51  310.061466 0.000027
+      benign       10.0.2.10         53    benign        10   10.108838 0.997551
+
+WROTE conn_scored.csv

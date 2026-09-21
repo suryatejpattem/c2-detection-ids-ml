@@ -11,11 +11,11 @@ What the work found: `findings.md`
 ## Environment
 
 ```
-Ubuntu in a VirtualBox VM
+Ubuntu 24.04.2 LTS in a VirtualBox VM
 Suricata 8.0.6 RELEASE
 ET Open ruleset, 52,466 rules, downloaded with suricata-update
 Zeek 8.2.2
-Python 3, pandas and scikit-learn - see analysis/requirements.txt
+Python 3, pandas 3.0.5, scikit-learn 1.9.0 - pins in analysis/requirements.txt
 ```
 
 ---

@@ -576,20 +576,21 @@ never be presented as a naturally occurring finding.
 MALICIOUS = {
     '45.131.214.85',      # C2 2026 NetSupport
     '38.146.28.242',      # C2 2025 NetSupport
-    '79.141.165.202',     # 2025 StealC CnC
+    '79.141.165.202',     # 2025 StealC CnC (ET sids 2066280, 2066559)
     '45.61.150.28',       # 2025 payload download
     '172.86.90.13',       # 2025 early stage
     '209.59.180.92',      # 2025 early stage
     '135.148.121.246',    # 2022 Emotet C2 (from 172.16.0.149)
     '59.148.253.194',     # 2022 Emotet C2 (from 172.16.0.170)
+    '141.98.10.79',       # 2024 STRRAT C2
 }
 ```
 
-Known omission: `141.98.10.79` (STRRAT C2) is absent. It never entered either
-feature table — one keep-alive connection in `conn.log`, zero rows in
-`http.log` — so adding it would not change any measurement. It is recorded here
-for completeness and should be added if the capture is reprocessed with a lower
-event threshold.
+`141.98.10.79` (STRRAT C2) is in the set but never appears in either feature
+table. STRRAT used one keep-alive connection, so `conn.log` produced a single
+row and `http.log` produced none. Both are below the 10-event floor, where no
+gap statistic can be computed. Three other addresses in this set are never
+labelled for the same reason: only five of the nine ever produce a row.
 
 ---
 
